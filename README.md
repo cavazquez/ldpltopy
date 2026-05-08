@@ -4,10 +4,25 @@ Transpilador en **Python 3.13** que convierte un **subset documentado de [LDPL](
 
 Referencia oficial del lenguaje: [documentación LDPL](https://docs.ldpl-lang.org/) (estructura `data:` / `procedure:`, tipos `number` y `text`, E/S, flujo, etc.).
 
+## Stack
+
+| Tecnología | Rol |
+| --- | --- |
+| 🐍 **Python 3.13** | Lenguaje del transpilador y código generado |
+| 📜 **LDPL** | Lenguaje fuente (subset documentado) |
+| ⚡ **[uv](https://docs.astral.sh/uv/)** | Entorno y dependencias (`uv sync`, `uv run`) |
+| ⌨️ **[Typer](https://typer.tiangolo.com/)** | CLI (`ldpltopy archivo.ldpl`, `-o`) |
+| 🦀 **[Ruff](https://docs.astral.sh/ruff/)** | Linter y formateo |
+| 🔷 **[mypy](https://www.mypy-lang.org/)** | Comprobación de tipos (`--strict`) |
+| 🧪 **[pytest](https://pytest.org/)** | Tests |
+| ⏱️ **[pytest-benchmark](https://pytest-benchmark.readthedocs.io/)** | Benchmarks locales |
+| 🎬 **GitHub Actions** | CI (mismos chequeos que en local) |
+| 📦 **setuptools** | Build del paquete (`pyproject.toml`) |
+
 ## Requisitos
 
-- [uv](https://docs.astral.sh/uv/)
-- Python **3.13** (el repo incluye `.python-version` para `uv sync`)
+- ⚡ [uv](https://docs.astral.sh/uv/)
+- 🐍 Python **3.13** (el repo incluye `.python-version` para `uv sync`)
 
 ## Instalación
 
@@ -17,7 +32,7 @@ cd ldpltopy
 uv sync --group dev
 ```
 
-## Uso con `uv`
+## Uso con uv
 
 Emitir Python por **stdout**:
 
@@ -35,6 +50,12 @@ Ejecutar el módulo:
 
 ```bash
 uv run python -m ldpltopy programa.ldpl
+```
+
+### Chequeos locales (paridad con CI)
+
+```bash
+./scripts/check-ci.sh
 ```
 
 ## Ejemplo mínimo (`procedure:` sin variables)
@@ -91,7 +112,7 @@ uv run mypy .
 uv run pytest --benchmark-disable
 ```
 
-## Benchmarks (`pytest-benchmark`)
+## Benchmarks (pytest-benchmark)
 
 Incluidos en `tests/test_benchmarks.py` (tokenizar líneas, parsear, transpilar y ejecutar el Python generado en un caso simple):
 
@@ -103,4 +124,4 @@ En CI los benchmarks se desactivan (`--benchmark-disable`) para tiempos estables
 
 ## Licencia
 
-Ver `LICENSE` (Apache-2.0 según el repositorio).
+Este proyecto se distribuye bajo la **GNU General Public License v3.0** (SPDX: `GPL-3.0-only`). El texto completo está en el archivo [`LICENSE`](LICENSE).

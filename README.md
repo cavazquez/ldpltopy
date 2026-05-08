@@ -2,20 +2,21 @@
 <img src="assets/ldpltopy-logo.png" alt="ldpltopy" width="200">
 </p>
 
-<p align="center">
-<sub>
-<a href="https://www.python.org/" title="Python 3.13">🐍</a> ·
-<a href="https://docs.ldpl-lang.org/" title="LDPL">📜</a> ·
-<a href="https://docs.astral.sh/uv/" title="uv">⚡</a> ·
-<a href="https://typer.tiangolo.com/" title="Typer">⌨️</a> ·
-<a href="https://docs.astral.sh/ruff/" title="Ruff">🦀</a> ·
-<a href="https://www.mypy-lang.org/" title="mypy">🔷</a> ·
-<a href="https://pytest.org/" title="pytest">🧪</a> ·
-<a href="https://pytest-benchmark.readthedocs.io/" title="pytest-benchmark">⏱️</a> ·
-<a href="https://github.com/features/actions" title="GitHub Actions">🎬</a> ·
-<a href="https://setuptools.pypa.io/" title="setuptools">📦</a>
-</sub>
-</p>
+<div align="center">
+
+[![🐍 Python](https://img.shields.io/badge/🐍_Python-3.13-yellow?logo=python&logoColor=white)](https://www.python.org/)
+[![📜 LDPL](https://img.shields.io/badge/📜_LDPL-language_subset-3776AB)](https://docs.ldpl-lang.org/)
+[![⚡ uv](https://img.shields.io/badge/⚡_uv-package_manager-7057ff)](https://docs.astral.sh/uv/)
+[![⌨️ Typer](https://img.shields.io/badge/⌨️_Typer-CLI-009688)](https://typer.tiangolo.com/)
+[![🦀 Ruff](https://img.shields.io/badge/🦀_Ruff-lint_format-261616?logo=ruff&logoColor=white)](https://docs.astral.sh/ruff/)
+[![🔷 mypy](https://img.shields.io/badge/🔷_mypy-strict-2d50a5)](https://www.mypy-lang.org/)
+[![🧪 pytest](https://img.shields.io/badge/🧪_pytest-tests-0A9EDC?logo=pytest&logoColor=white)](https://pytest.org/)
+[![⏱️ pytest-benchmark](https://img.shields.io/badge/⏱️_pytest_benchmark-benchmarks-lightgrey)](https://pytest-benchmark.readthedocs.io/)
+[![🎬 GitHub Actions](https://img.shields.io/badge/🎬_GitHub_Actions-CI-2088FF?logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
+[![📦 setuptools](https://img.shields.io/badge/📦_setuptools-build-3776AB)](https://setuptools.pypa.io/)
+[![📜 License](https://img.shields.io/badge/📜_License-GPL--3.0-blue)](LICENSE)
+
+</div>
 
 # ldpltopy
 

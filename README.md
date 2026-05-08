@@ -1,23 +1,27 @@
+<p align="center">
+<img src="assets/ldpltopy-logo.png" alt="ldpltopy" width="200">
+</p>
+
+<p align="center">
+<sub>
+<a href="https://www.python.org/" title="Python 3.13">🐍</a> ·
+<a href="https://docs.ldpl-lang.org/" title="LDPL">📜</a> ·
+<a href="https://docs.astral.sh/uv/" title="uv">⚡</a> ·
+<a href="https://typer.tiangolo.com/" title="Typer">⌨️</a> ·
+<a href="https://docs.astral.sh/ruff/" title="Ruff">🦀</a> ·
+<a href="https://www.mypy-lang.org/" title="mypy">🔷</a> ·
+<a href="https://pytest.org/" title="pytest">🧪</a> ·
+<a href="https://pytest-benchmark.readthedocs.io/" title="pytest-benchmark">⏱️</a> ·
+<a href="https://github.com/features/actions" title="GitHub Actions">🎬</a> ·
+<a href="https://setuptools.pypa.io/" title="setuptools">📦</a>
+</sub>
+</p>
+
 # ldpltopy
 
 Transpilador en **Python 3.13** que convierte un **subset documentado de [LDPL](https://docs.ldpl-lang.org/)** a código Python 3.13. La arquitectura es por fases (**lexer → parser recursivo → AST propio → emisión de Python**), no un conversor monolítico basado en expresiones regulares sobre el programa completo.
 
 Referencia oficial del lenguaje: [documentación LDPL](https://docs.ldpl-lang.org/) (estructura `data:` / `procedure:`, tipos `number` y `text`, E/S, flujo, etc.).
-
-## Stack
-
-| Tecnología | Rol |
-| --- | --- |
-| 🐍 **Python 3.13** | Lenguaje del transpilador y código generado |
-| 📜 **LDPL** | Lenguaje fuente (subset documentado) |
-| ⚡ **[uv](https://docs.astral.sh/uv/)** | Entorno y dependencias (`uv sync`, `uv run`) |
-| ⌨️ **[Typer](https://typer.tiangolo.com/)** | CLI (`ldpltopy archivo.ldpl`, `-o`) |
-| 🦀 **[Ruff](https://docs.astral.sh/ruff/)** | Linter y formateo |
-| 🔷 **[mypy](https://www.mypy-lang.org/)** | Comprobación de tipos (`--strict`) |
-| 🧪 **[pytest](https://pytest.org/)** | Tests |
-| ⏱️ **[pytest-benchmark](https://pytest-benchmark.readthedocs.io/)** | Benchmarks locales |
-| 🎬 **GitHub Actions** | CI (mismos chequeos que en local) |
-| 📦 **setuptools** | Build del paquete (`pyproject.toml`) |
 
 ## Requisitos
 

@@ -1,0 +1,10 @@
+data:
+i is number
+
+procedure:
+store 3 in i
+while i is greater than 0 do
+display i lf
+in i solve i - 1
+repeat
+display "done" crlf

@@ -1,0 +1,7 @@
+data:
+name is text
+
+procedure:
+display "Name? " lf
+accept name
+display "Hi " name crlf

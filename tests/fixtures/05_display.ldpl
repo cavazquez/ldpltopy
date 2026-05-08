@@ -1,0 +1,3 @@
+procedure:
+display "Line one" lf
+display "Line two" crlf

@@ -1,0 +1,10 @@
+data:
+n is number
+
+procedure:
+store 10 in n
+if n is greater than 5 then
+display "big" crlf
+else
+display "small" crlf
+end if

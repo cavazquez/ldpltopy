@@ -1,0 +1,6 @@
+data:
+greeting is text
+
+procedure:
+in greeting join "Hello, " "world" "!"
+display greeting crlf

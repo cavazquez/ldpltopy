@@ -1,0 +1,7 @@
+data:
+value is number
+
+procedure:
+store 100 in value
+store 200 in value
+display value crlf

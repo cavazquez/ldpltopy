@@ -1,0 +1,6 @@
+data:
+message is text
+
+procedure:
+store "LDPL" in message
+display message crlf

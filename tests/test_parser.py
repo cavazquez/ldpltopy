@@ -6,7 +6,7 @@ from ldpltopy.parser import parse_source
 
 def test_parse_minimal_procedure() -> None:
     src = """
-procedure:
+procedure
 display "x" crlf
 """
     prog = parse_source(src)
@@ -16,11 +16,22 @@ display "x" crlf
     assert isinstance(st, DisplayStmt)
 
 
+def test_parse_procedure_header_with_colon_still_works() -> None:
+    """Regresión: variante con dos puntos (no válida en el compilador C++ de referencia)."""
+    src = """
+procedure:
+display "x" crlf
+"""
+    prog = parse_source(src)
+    assert len(prog.statements) == 1
+    assert isinstance(prog.statements[0], DisplayStmt)
+
+
 def test_parse_data_and_store() -> None:
     src = """
 data:
 n is number
-procedure:
+procedure
 store 5 in n
 """
     prog = parse_source(src)
@@ -35,7 +46,7 @@ def test_parse_string_var() -> None:
     src = """
 data:
 s is text
-procedure:
+procedure
 store "a" in s
 """
     prog = parse_source(src)
@@ -48,7 +59,7 @@ def test_parse_solve_short_scalar() -> None:
     src = """
 data:
 n is number
-procedure:
+procedure
 in n solve 3
 """
     prog = parse_source(src)
@@ -63,7 +74,7 @@ def test_parse_solve_indexed_list() -> None:
     src = """
 data:
 lst is number list
-procedure:
+procedure
 in lst : 0 solve 9
 """
     prog = parse_source(src)

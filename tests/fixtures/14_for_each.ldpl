@@ -2,7 +2,7 @@ data:
 letter is text
 letters is text list
 
-procedure:
+procedure
 push "A" to letters
 push "B" to letters
 for each letter in letters do

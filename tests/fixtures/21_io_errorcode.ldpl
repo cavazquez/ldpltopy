@@ -3,7 +3,7 @@ t is text
 errorcode is number
 errortext is text
 
-procedure:
+procedure
 load file "_ldpltopy_missing_io.txt" in t
 display errorcode lf
 display errortext lf

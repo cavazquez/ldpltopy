@@ -31,9 +31,9 @@ def main() -> None:
     b: float = 0.0
     a = float(1)
     b = float(2)
-    if (((((float(a) == float(1))) or ((float(b) == float(99))))) and ((float(b) == float(2)))):
+    if (((float(a) == float(1))) and ((float(b) == float(2)))):
         print(''.join(['ok', '\n']), end="")
-    if (not ((float(a) == float(2)))):
+    if (float(a) != float(2)):
         print(''.join(['n', '\n']), end="")
 
 

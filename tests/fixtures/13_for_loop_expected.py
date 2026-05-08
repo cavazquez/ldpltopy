@@ -32,11 +32,11 @@ def main() -> None:
     _ldpl_for_0_end = float(2)
     _ldpl_for_0_step = float(1)
     if _ldpl_for_0_step >= 0:
-        while i <= _ldpl_for_0_end:
+        while i < _ldpl_for_0_end:
             print(''.join([_ldpl_number_text(i), '\n']), end="")
             i += _ldpl_for_0_step
     else:
-        while i >= _ldpl_for_0_end:
+        while i > _ldpl_for_0_end:
             print(''.join([_ldpl_number_text(i), '\n']), end="")
             i += _ldpl_for_0_step
     print(''.join(['x', '\n']), end="")

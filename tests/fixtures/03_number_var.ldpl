@@ -1,6 +1,6 @@
 data:
 count is number
 
-procedure:
+procedure
 store 7 in count
-display count crlf
+display count lf

@@ -57,7 +57,7 @@ def test_execute_else_if_branch() -> None:
 
 def test_execute_for_loop() -> None:
     r = _run_generated("13_for_loop.ldpl")
-    assert r.stdout == "0\n1\n2\nx\n"
+    assert r.stdout == "0\n1\nx\n"
 
 
 def test_execute_for_each_letters() -> None:

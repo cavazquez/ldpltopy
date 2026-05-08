@@ -1,6 +1,6 @@
 data:
 message is text
 
-procedure:
+procedure
 store "LDPL" in message
-display message crlf
+display message lf

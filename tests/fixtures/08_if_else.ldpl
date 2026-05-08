@@ -1,10 +1,10 @@
 data:
 n is number
 
-procedure:
+procedure
 store 10 in n
 if n is greater than 5 then
-display "big" crlf
+display "big" lf
 else
-display "small" crlf
+display "small" lf
 end if

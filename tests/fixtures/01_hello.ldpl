@@ -1,2 +1,2 @@
-procedure:
-display "Hello World!" crlf
+procedure
+display "Hello World!" lf

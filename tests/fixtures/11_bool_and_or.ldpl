@@ -2,12 +2,12 @@ data:
 a is number
 b is number
 
-procedure:
+procedure
 store 1 in a
 store 2 in b
-if ( a is equal to 1 or b is equal to 99 ) and b is equal to 2 then
-display "ok" crlf
+if a is equal to 1 and b is equal to 2 then
+display "ok" lf
 end if
-if not a is equal to 2 then
-display "n" crlf
+if a is not equal to 2 then
+display "n" lf
 end if

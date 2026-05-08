@@ -1,6 +1,6 @@
 data:
 greeting is text
 
-procedure:
+procedure
 in greeting join "Hello, " "world" "!"
-display greeting crlf
+display greeting lf

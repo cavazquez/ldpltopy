@@ -1,7 +1,7 @@
 data:
 i is number
 
-procedure:
+procedure
 store 0 in i
 while i is less than 5 do
 in i solve i + 1
@@ -13,4 +13,4 @@ break
 end if
 display i lf
 repeat
-display "done" crlf
+display "done" lf

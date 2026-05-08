@@ -1,7 +1,7 @@
 data:
 lst is number list
 
-procedure:
+procedure
 push 0 to lst
 in lst : 0 solve 99
 display lst : 0 lf

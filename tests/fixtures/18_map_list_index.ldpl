@@ -3,7 +3,7 @@ m is number map
 k is text
 lst is number list
 
-procedure:
+procedure
 store "x" in k
 store 7 in m : k
 push 1 to lst

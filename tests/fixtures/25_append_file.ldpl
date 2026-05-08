@@ -1,7 +1,7 @@
 data:
 buf is text
 
-procedure:
+procedure
 write "A" to file "_ldpltopy_append.txt"
 append "B" to file "_ldpltopy_append.txt"
 load file "_ldpltopy_append.txt" in buf

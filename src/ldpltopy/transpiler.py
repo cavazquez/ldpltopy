@@ -758,7 +758,7 @@ def _emit_stmt(
             f"{indent}{end_v} = float({end_e})",
             f"{indent}{step_v} = float({step_e})",
             f"{indent}if {step_v} >= 0:",
-            f"{indent}    while {c} <= {end_v}:",
+            f"{indent}    while {c} < {end_v}:",
         ]
         if stmt.body:
             for st_i in stmt.body:
@@ -769,7 +769,7 @@ def _emit_stmt(
             [
                 f"{indent}        {c} += {step_v}",
                 f"{indent}else:",
-                f"{indent}    while {c} >= {end_v}:",
+                f"{indent}    while {c} > {end_v}:",
             ]
         )
         if stmt.body:

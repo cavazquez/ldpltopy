@@ -3,7 +3,7 @@ a is number
 b is number
 c is number
 
-procedure:
+procedure
 store 5 in a
 add 2 and 3 in b
 subtract 1 from 10 in c

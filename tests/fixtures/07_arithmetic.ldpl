@@ -2,7 +2,7 @@ data:
 result is number
 a is number
 
-procedure:
+procedure
 store 2 in a
 in result solve ( a + 3 ) * 4
-display result crlf
+display result lf

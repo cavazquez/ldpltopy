@@ -1,13 +1,13 @@
 data:
 r is number
 
-procedure:
+procedure
 sub addtwo
 parameters:
 a is number
 b is number
 c is number
-procedure:
+procedure
 in c solve a + b
 end sub
 call addtwo with 4 5 r

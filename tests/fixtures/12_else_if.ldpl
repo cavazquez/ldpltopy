@@ -1,12 +1,12 @@
 data:
 name is text
 
-procedure:
+procedure
 store "Mike" in name
 if name is equal to "John" then
-display "J" crlf
+display "J" lf
 else if name is equal to "Mike" then
-display "M" crlf
+display "M" lf
 else
-display "x" crlf
+display "x" lf
 end if

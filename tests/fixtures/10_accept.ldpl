@@ -1,7 +1,7 @@
 data:
 name is text
 
-procedure:
+procedure
 display "Name? " lf
 accept name
-display "Hi " name crlf
+display "Hi " name lf

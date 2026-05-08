@@ -22,7 +22,7 @@
 
 Transpilador en **Python 3.13** que convierte un **subset documentado de [LDPL](https://docs.ldpl-lang.org/)** a código Python 3.13. La arquitectura es por fases (**lexer → parser recursivo → AST propio → emisión de Python**), no un conversor monolítico basado en expresiones regulares sobre el programa completo.
 
-Referencia oficial del lenguaje: [documentación LDPL](https://docs.ldpl-lang.org/) (estructura `data:` / `procedure:`, tipos `number` y `text`, E/S, flujo, etc.).
+Referencia oficial del lenguaje: [documentación LDPL](https://docs.ldpl-lang.org/) (estructura `data:` / sección **`procedure`** sin `:` en el compilador de referencia; ldpltopy acepta también **`procedure:`**).
 
 ## Requisitos
 
@@ -63,10 +63,12 @@ uv run python -m ldpltopy programa.ldpl
 ./scripts/check-ci.sh
 ```
 
-## Ejemplo mínimo (`procedure:` sin variables)
+## Ejemplo mínimo (solo `procedure`, sin variables)
+
+En el compilador LDPL de referencia la cabecera de sección es la palabra **`procedure`** sin dos puntos (`PROCEDURE:` no coincide con el parser oficial). ldpltopy acepta **`procedure`** y **`procedure:`** indistintamente.
 
 ```ldpl
-procedure:
+procedure
 display "Hello World!" crlf
 ```
 
@@ -78,7 +80,7 @@ Ver `tests/fixtures/09_while.ldpl` y el Python esperado en `tests/fixtures/09_wh
 
 Este proyecto **no** implementa LDPL completo. El subset es **testeado y extensible**, alineado con la especificación donde aplica:
 
-- Secciones **`data:`** (opcional) y **`procedure:`** (obligatoria).
+- Secciones **`data:`** (opcional si no hay variables) y **`procedure`** (obligatoria; en ldpltopy **`procedure:`** es equivalente).
 - Declaraciones **`nombre is number|text`**, listas **`number list` / `text list`**, mapas **`number map` / `text map`** (mapas como `dict` en Python; claves en texto).
 - **`store … in …`**, con índice o clave: **`store x in lista : i`**, **`store x in mapa : clave`** (clave/índice como literal o variable).
 - **`in … solve …`** con **`in var : clave solve expr`** para listas/mapas.
@@ -86,10 +88,10 @@ Este proyecto **no** implementa LDPL completo. El subset es **testeado y extensi
 - **`push … to …`** (listas).
 - **`display`** y **`print`**; literales y escapes; **`in … join …`**; **`in … solve …`** (`+ - * /`, paréntesis, menos unario).
 - **`accept`** (texto / número con `Redo from start`).
-- Flujo: **`if` / `else if` / `else` / `end if`**, **`while … do` / `repeat`**, condiciones compuestas **`and` / `or` / `not`** y paréntesis, **`for … from … to … [step …] do`** (to **inclusive**; step opcional), **`for each … in …`**, **`break` / `continue`**.
+- Flujo: **`if` / `else if` / `else` / `end if`**, **`while … do` / `repeat`**, condiciones compuestas **`and` / `or` / `not`** y paréntesis, **`for … from … to … [step …] do`** (límite **`to` exclusivo** como en LDPL 5.x: con step ≥ 0 se ejecuta mientras `counter < end`; step opcional), **`for each … in …`**, **`break` / `continue`**.
 - Aritmética por sentencia: **`add`**, **`subtract`** (semántica *subtract A from B* → `B - A`), **`multiply`**, **`divide`**, **`modulo`**, **`floor`**, **`ceil`**, **`increment`**, **`decrement`**, **`get random`**.
 - Texto: **`get length of`**, **`trim`**, **`replace … with … in`**.
-- **`sub … end sub`** con **`parameters:`**, **`local data:`**, **`procedure:`** opcionales; **`call … with …`** (paso por referencia emulado con listas de un elemento); **`return`** dentro de sub.
+- **`sub … end sub`** con **`parameters:`**, **`local data:`** y subsección **`procedure`** opcionales (misma convención `procedure` / `procedure:` que arriba); **`call … with …`** (paso por referencia emulado con listas de un elemento); **`return`** dentro de sub.
 - E/S archivos: **`load file … in …`**, **`write … to file …`**, **`append … to file …`**. Si en `data:` existen **`errorcode`** y **`errortext`** (nombres en minúsculas) y el programa usa estas sentencias, se actualizan códigos/mensajes mínimos en errores (subset); tras cada operación de archivo se copian **`_ldpl_ec` / `_ldpl_et`** a esas variables para que un **`display`** posterior vea el estado acumulado.
 - **`include "ruta"`** (preprocesador): inserta el archivo; rutas relativas al fichero `.ldpl` que se está compilando (la CLI pasa la ruta absoluta del fuente).
 - Comparaciones escalares según [flow](https://docs.ldpl-lang.org/flow/).
@@ -99,7 +101,7 @@ Este proyecto **no** implementa LDPL completo. El subset es **testeado y extensi
 
 | Característica LDPL | Estado |
 | --- | --- |
-| Secciones `data:` / `procedure:` | **Soportado** (subset) |
+| Secciones `data:` / `procedure` (`procedure:` en ldpltopy) | **Soportado** (subset) |
 | Tipos escalares `number`, `text` | **Soportado** |
 | Listas / mapas escalares | **Soportado** (subset: sin multicontenedores ni `split` listas, etc.) |
 | `sub` / `call` / `parameters` / `local data` / `return` | **Soportado** (subset; ver emisión Python) |
@@ -116,6 +118,8 @@ Este proyecto **no** implementa LDPL completo. El subset es **testeado y extensi
 ### Tests
 
 Los casos en `tests/fixtures/` siguen el esquema `NN_slug.ldpl` y `NN_slug_expected.py` (golden del transpilador). Los `include` de prueba usan fragmentos fuera de `*.ldpl` cuando el fragmento no es un programa completo (p. ej. `22_include_fragment.txt`). Ejemplos de backfill: `21_io_errorcode` (`errorcode`/`errortext` tras fallo de `load`), `23_case_insensitive` (palabras clave en mayúsculas), `24_solve_list` (`in lista : índice solve …`), `25_append_file` (`append … to file`).
+
+**Comparación con LDPL de referencia:** `tests/test_ldpl_reference_compare.py` compila cada `.ldpl` con `ldpl` y compara la salida estándar con la del Python generado (normalizando finales de línea). Requiere un `ldpl` funcional en `PATH` o `LDPL_BIN`; si no hay binario o el *smoke* `01_hello.ldpl` no compila (p. ej. snap sin `ldpl_lib.cpp`), los 15 tests se omiten y el resto del suite sigue en verde.
 
 ## Calidad y tests
 

@@ -1,8 +1,8 @@
 data:
 i is number
 
-procedure:
+procedure
 for i from 0 to 2 step 1 do
 display i lf
 repeat
-display "x" crlf
+display "x" lf

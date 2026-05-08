@@ -10,7 +10,8 @@ from ldpltopy.parser import parse_source
 from ldpltopy.transpiler import transpile
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
-SAMPLE = (FIXTURES / "09_while.ldpl").read_text(encoding="utf-8")
+SAMPLE_PATH = FIXTURES / "09_while.ldpl"
+SAMPLE = SAMPLE_PATH.read_text(encoding="utf-8")
 
 
 def test_bench_lex_all_lines(benchmark: Any) -> None:
@@ -22,11 +23,16 @@ def test_bench_lex_all_lines(benchmark: Any) -> None:
 
 
 def test_bench_parse(benchmark: Any) -> None:
-    benchmark(parse_source, SAMPLE)
+    fp = SAMPLE_PATH.resolve()
+
+    def _run() -> None:
+        parse_source(SAMPLE, file_path=fp)
+
+    benchmark(_run)
 
 
 def test_bench_transpile(benchmark: Any) -> None:
-    prog = parse_source(SAMPLE)
+    prog = parse_source(SAMPLE, file_path=SAMPLE_PATH.resolve())
 
     def _run() -> None:
         transpile(prog)
@@ -35,7 +41,7 @@ def test_bench_transpile(benchmark: Any) -> None:
 
 
 def test_bench_run_generated_python(benchmark: Any, tmp_path: Path) -> None:
-    py = transpile(parse_source(SAMPLE))
+    py = transpile(parse_source(SAMPLE, file_path=SAMPLE_PATH.resolve()))
     out = tmp_path / "gen.py"
     out.write_text(py, encoding="utf-8")
 

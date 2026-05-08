@@ -27,11 +27,16 @@ def _ldpl_map_key_num(v: float) -> str:
 
 
 def main() -> None:
-    result: float = 0.0
-    a: float = 0.0
-    a = float(2)
-    result = ((float(a) + 3) * 4)
-    print(''.join([_ldpl_number_text(result), '\n']), end="")
+    i: float = 0.0
+    i = float(0)
+    while (float(i) < float(5)):
+        i = (float(i) + 1)
+        if (float(i) == float(2)):
+            continue
+        if (float(i) == float(4)):
+            break
+        print(''.join([_ldpl_number_text(i), '\n']), end="")
+    print(''.join(['done', '\n']), end="")
 
 
 if __name__ == "__main__":

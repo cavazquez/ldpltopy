@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+import math
+import random
+from pathlib import Path
+
 def _ldpl_text_to_number(t: str) -> float:
     s = t.strip()
     if not s:
@@ -12,6 +16,11 @@ def _ldpl_text_to_number(t: str) -> float:
         return 0.0
 
 def _ldpl_number_text(v: float) -> str:
+    if v == int(v):
+        return str(int(v))
+    return str(v)
+
+def _ldpl_map_key_num(v: float) -> str:
     if v == int(v):
         return str(int(v))
     return str(v)

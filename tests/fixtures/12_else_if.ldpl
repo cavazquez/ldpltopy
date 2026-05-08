@@ -1,0 +1,12 @@
+data:
+name is text
+
+procedure:
+store "Mike" in name
+if name is equal to "John" then
+display "J" crlf
+else if name is equal to "Mike" then
+display "M" crlf
+else
+display "x" crlf
+end if

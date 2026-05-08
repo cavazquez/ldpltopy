@@ -27,11 +27,15 @@ def _ldpl_map_key_num(v: float) -> str:
 
 
 def main() -> None:
-    result: float = 0.0
-    a: float = 0.0
-    a = float(2)
-    result = ((float(a) + 3) * 4)
-    print(''.join([_ldpl_number_text(result), '\n']), end="")
+    r: float = 0.0
+    def ldpl_sub_addtwo(a_box, b_box, c_box) -> None:
+        c_box[0] = (float(a_box[0]) + float(b_box[0]))
+    _ldpl_cb_0 = [float(4)]
+    _ldpl_cb_1 = [float(5)]
+    _ldpl_cb_2 = [r]
+    ldpl_sub_addtwo(_ldpl_cb_0, _ldpl_cb_1, _ldpl_cb_2)
+    r = _ldpl_cb_2[0]
+    print(''.join([_ldpl_number_text(r), '\n']), end="")
 
 
 if __name__ == "__main__":

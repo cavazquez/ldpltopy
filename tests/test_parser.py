@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ldpltopy.ast import DisplayStmt, NumberLit, StoreStmt, StringLit
+from ldpltopy.ast import DisplayStmt, NumberLit, SolveStmt, StoreStmt, StringLit
 from ldpltopy.parser import parse_source
 
 
@@ -42,3 +42,33 @@ store "a" in s
     st = prog.statements[0]
     assert isinstance(st, StoreStmt)
     assert isinstance(st.value, StringLit)
+
+
+def test_parse_solve_short_scalar() -> None:
+    src = """
+data:
+n is number
+procedure:
+in n solve 3
+"""
+    prog = parse_source(src)
+    st = prog.statements[0]
+    assert isinstance(st, SolveStmt)
+    assert st.target == "n"
+    assert st.key is None
+    assert st.expr == NumberLit(3.0)
+
+
+def test_parse_solve_indexed_list() -> None:
+    src = """
+data:
+lst is number list
+procedure:
+in lst : 0 solve 9
+"""
+    prog = parse_source(src)
+    st = prog.statements[0]
+    assert isinstance(st, SolveStmt)
+    assert st.target == "lst"
+    assert st.key == NumberLit(0.0)
+    assert st.expr == NumberLit(9.0)

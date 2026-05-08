@@ -1,0 +1,14 @@
+data:
+r is number
+
+procedure:
+sub addtwo
+parameters:
+a is number
+b is number
+c is number
+procedure:
+in c solve a + b
+end sub
+call addtwo with 4 5 r
+display r lf

@@ -27,11 +27,18 @@ def _ldpl_map_key_num(v: float) -> str:
 
 
 def main() -> None:
-    result: float = 0.0
-    a: float = 0.0
-    a = float(2)
-    result = ((float(a) + 3) * 4)
-    print(''.join([_ldpl_number_text(result), '\n']), end="")
+    t: str = ""
+    try:
+        _p = Path('_ldpltopy_test_io.txt')
+        _p.parent.mkdir(parents=True, exist_ok=True)
+        _p.write_text(str('hello'), encoding='utf-8')
+    except OSError:
+        pass
+    try:
+        t = Path('_ldpltopy_test_io.txt').read_text(encoding='utf-8')
+    except OSError:
+        t = ""
+    print(''.join([str(t), '\n']), end="")
 
 
 if __name__ == "__main__":

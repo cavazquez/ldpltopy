@@ -41,7 +41,7 @@ def _root(
         raise typer.Exit(code=2)
     texto = entrada.read_text(encoding="utf-8")
     try:
-        programa = parse_source(texto)
+        programa = parse_source(texto, file_path=entrada.resolve())
     except ParseError as err:
         typer.secho(str(err), fg=typer.colors.RED, err=True)
         raise typer.Exit(code=1) from err

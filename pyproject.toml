@@ -50,6 +50,7 @@ warn_unused_ignores = true
 show_error_codes = true
 mypy_path = ["src"]
 explicit_package_bases = true
+exclude = ["tests/fixtures/"]
 
 [[tool.mypy.overrides]]
 module = ["tests.*"]

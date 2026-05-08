@@ -1,0 +1,11 @@
+data:
+s is text
+t is text
+n is number
+
+procedure:
+store "  hi  " in s
+trim s in t
+get length of t in n
+replace "hi" with "yo" in t
+display t crlf

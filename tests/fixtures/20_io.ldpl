@@ -1,0 +1,7 @@
+data:
+t is text
+
+procedure:
+write "hello" to file "_ldpltopy_test_io.txt"
+load file "_ldpltopy_test_io.txt" in t
+print t

@@ -1,0 +1,16 @@
+data:
+i is number
+
+procedure:
+store 0 in i
+while i is less than 5 do
+in i solve i + 1
+if i is equal to 2 then
+continue
+end if
+if i is equal to 4 then
+break
+end if
+display i lf
+repeat
+display "done" crlf

@@ -1,0 +1,13 @@
+data:
+a is number
+b is number
+
+procedure:
+store 1 in a
+store 2 in b
+if ( a is equal to 1 or b is equal to 99 ) and b is equal to 2 then
+display "ok" crlf
+end if
+if not a is equal to 2 then
+display "n" crlf
+end if
